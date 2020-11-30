@@ -12,6 +12,7 @@
   </head>
   <body>
     <h1>Hello, world!</h1>
+    <h1>Hai Semuanya</h1>
     <h2><a href="register.php">Register</a></h2>
     <h2><a href="login.php">Masuk</a></h2>
     <!-- Optional JavaScript; choose one of the two! -->

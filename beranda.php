@@ -17,6 +17,7 @@
     <h2><?php echo $_SESSION["user"]["nama"]?></h2>
     <h2><?php echo $_SESSION["user"]["email"]?></h2>
     <h3>SUKSES!!</h3>
+    <p><a href="logout.php">Logout</a></p>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
