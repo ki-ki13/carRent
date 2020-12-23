@@ -1,1 +1,1 @@
-# carRent
+# ScooterRent
