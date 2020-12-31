@@ -1,0 +1,77 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ini beranda-page */
+.atas-beranda{
+    padding: 5%;
+    /* width: 100vw; */
+    background-color: #1B1F22;
+    display: flex;
+    justify-content: space-between;
+}
+.atas-beranda h1{
+    color: #ffffff;
+    font-size: 45px;
+}
+.atas-beranda p{
+    color:#ffffff;
+    font-size: 30px;
+}
+.atas-beranda .logout{
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    align-self: flex-end;
+    text-align: center;
+}
+.atas-beranda .logout a{
+    text-decoration: none;
+    color: #1B1F22;
+    font-size :20px;
+    line-height: 50px;
+    margin-right: 0;
+}
+.beranda-page .scooter-sewa{
+    padding: 3% 6%;
+    text-align: right;
+}
+.beranda-page .scooter-sewa a{
+    text-decoration: underline;
+    font-size: 25px;
+    color: #1B1F22;
+    font-weight: bold;
+}
+.beranda-page .row{
+    display: flex;
+    margin: 0 4% 1% 4%;
+    flex-wrap: wrap;
+}
+.beranda-page .row .product{
+    flex-grow:1;
+    width: 20%;
+    text-align: center;
+    border-radius: 20px;
+    height: 360px;
+    margin: 0 1% 2% 0;
+    background-color: #1B1F22;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+}
+.beranda-page .row .product img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+.beranda-page .row .product .keterangan{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 40px;
+
+}

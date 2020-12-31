@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,14 +7,28 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel = "stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <title>HOMEPAGE</title>
+    <title>ScooterRent</title>
   </head>
   <body>
-  <h1>Hello, world!</h1>
-    <h1>Hai All</h1>
-    <h2><a href="register.php">Register</a></h2>
-    <h2><a href="login.php">Masuk</a></h2>
+  <div class="atas"></div>
+        <div class="isi">
+            <div class="kiri">
+                <h1>Scooter Rent</h1>
+                <p>Sewa scooter dengan <br> harga terbaik</p>
+                <div class = "button">
+                    <div class="login">
+                        <a href="login.php">login</a>
+                    </div>
+                    <a class="register" href="register.php">Register</a>
+                </div>
+            </div>
+            <div class="kanan">
+                <img src="poto/scooter3.jpg">
+            </div>
+        </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

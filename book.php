@@ -1,6 +1,6 @@
 <?php require_once("auth.php"); 
       include 'connect.php';
-      // session_start();
+      //session_start();
 ?>
 
 <!doctype html>
@@ -11,58 +11,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
+    <link rel = "stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-    <title>Booking</title>
+    <title>Scooter Details</title>
   </head>
   <body>
- 
-    <div class = container-fluid>
-      <h3>Detail Sewa</h3>
-      <div class = container>
-        <div class="row">
-        <?php 
-        foreach($_SESSION['simpan'] as $id_scooter => $jumlah){ 
-          $ambil = $db ->query("SELECT * FROM scooter WHERE id_scooter=$id_scooter");
+  <div class="kembali-beranda">
+            <a href="beranda.php">Kembali ke Beranda</a> 
+        </div>
+        <div class="details-page">
+        <?php
+          $id_scooter = $_GET['id'];
+          $ambil = $db ->query("SELECT * FROM scooter WHERE id_scooter= $id_scooter");
           $perproduk = $ambil -> fetch(PDO::FETCH_ASSOC)?>
-          <div class ="col-sm-4">
-            <img class="img-fluid rounded" style ="weight=300px;" src="poto/<?php echo $perproduk ['foto'];?>">
-            <h4 class="float-left"><?php echo $perproduk['nama_scooter']?></h4>
-            <h5 class="float-left">Rp. <?php echo $perproduk['harga']?></h5>
-          </div>
-          
-              
-          <div class = "col-sm-6">
-            <form method="POST">
+            <div class="kiri-detail">
+                <img src="poto/<?php echo $perproduk ['foto'];?>">
+                <div class="ket-details">
+                    <p><?php echo $perproduk['nama_scooter']?></p>
+                    <p>Rp. <?php echo $perproduk['harga']?></p>
+                </div>
+            </div>
+            <div class="kanan-detail">
+                <h3>Details</h3>
+                <form action="" method="POST">
+                    <div class="form">
+                        <input type="number" min="0" max="4" class="form-waktu" name="lama_penyewaan" placeholder="lama penyewaan">
+                    </div>
+                    <div class="form">
+                        <input type="date" class="form-tgl" name="tanggal_penyewaan" placeholder="tanggal penyewaan">
+                    </div>
+                    <div class="konfirm-harga">
+                        <button type="submit" class="btn-confirm" name="confirm">Konfirmasi</button>
+                        <!-- php-script -->
+                        <?php
+                          if(isset($_POST['confirm'])){
+                              $id_pelanggan = $_SESSION["user"]["id_pelanggan"];
+                              $status = "rent";
+                              $tgl = $_POST['tanggal_penyewaan'];
+                              $waktu = $_POST['lama_penyewaan'];
+                              $harga = $perproduk['harga'];
+                              $total_harga = $harga * $waktu;?>
+                        <p>Rp. <?php echo $total_harga?></p>
+                        <?php } ?>
+                    </div>
+                    <button type="submit" class="btn-sewa" name="okay">Sewa</button>
+                    <!-- php-script -->
+                    <?php 
+                      if(isset($_POST['okay'])){
+                        $mysqlDate = date("Y-m-d",strtotime($tgl));
+                        $sql = "INSERT INTO penyewaan (id_pelanggan,tanggal_penyewaan,waktu,id_scooter,total_harga) 
+                        VALUES ('$id_pelanggan', '$tgl' , '$waktu' , '$id_scooter' , '$total_harga')";
+                        $stmt = $db->prepare($sql);
+                        $saved = $stmt->execute();
+                       
+                        if($saved) { 
+                          //echo "succes";
+                          echo "<script>location='list.php';</script>";
+                          $sql2 = "UPDATE scooter SET status = '$status' WHERE id_scooter = '$id_scooter'";
+                          $stmt2 = $db->prepare($sql2);
+                          $saved2 = $stmt2->execute();
+                        }
+                      }
+                          ?>
+                </form>
+            </div>
+        </div>
+  <!-- <div class="main">
+  <h1>Scooter Details</h1>
+  <div class="container">
+    <div class="row">
+    <--?php
+        $id_scooter = $_GET['id'];
+        $ambil = $db ->query("SELECT * FROM scooter WHERE id_scooter= $id_scooter");
+        $perproduk = $ambil -> fetch(PDO::FETCH_ASSOC)?>
+      <div class="col-sm-6">
+      <img class="img-fluid rounded" style ="weight=300px;" src="poto/<--?php echo $perproduk ['foto'];?>">
+      <h4 class="float-left"><--?php echo $perproduk['nama_scooter']?></h4>
+      <h5 class="float-left">Rp. <--?php echo $perproduk['harga']?></h5>
+      </div>
+      <div class="col-sm-6">
+        <form method="POST">
             <div class="form-group">
-                <label for="waktu">Lama Penyewaan</label>
-                <input type="number" min="0" max="4" class="form-control" name="waktu" placeholder="lama_penyewaan">
+                <label for="lama_penyewaan">Lama Penyewaan</label>
+                <input type="number" min="0" max="4" class="form-control" name="lama_penyewaan" placeholder="lama penyewaan">
             </div>
             <div class="form-group">
                 <label for="tanggal_penyewaan">Tanggal Penyewaan</label>
-                <input type="date" class="form-control" name="tanggal_penyewaan" placeholder="Tanggal Penyewaan">
+                <input type="date" class="form-control" name="tanggal_penyewaan" placeholder="tanggal penyewaan">
             </div>
-            <button type="submit" class="btn btn-primary" name="okay">Continue</button>
-            </form>
-          </div>
-            <?php
-            if(isset($_POST['okay'])){
-              $waktu = $_POST['waktu'];
-              $tanggal_penyewaan = $_POST['tanggal_penyewaan'];
-              $_SESSION['time']=$waktu;
-              $_SESSION['date']=$tanggal_penyewaan;  
+            <button type="submit" class="btn btn-primary" name="confirm">Confirm</button>
+            <button type="submit" class="btn btn-primary" name="okay">Sewa</button>
+        </form>
+        <a href ="beranda.php" class= "btn btn-primary">Kembali ke beranda</a>
 
+        <--?php
+            if(isset($_POST['confirm'])){
+                $id_pelanggan = $_SESSION["user"]["id_pelanggan"];
+                $status = "rent";
+                $tgl = $_POST['tanggal_penyewaan'];
+                $waktu = $_POST['lama_penyewaan'];
+                $harga = $perproduk['harga'];
+                $total_harga = $harga * $waktu;?> 
+                <p>Total Harga = Rp. <--?php echo $total_harga?></p>
+            <--?php }
+
+            if(isset($_POST['okay'])){
+              $mysqlDate = date("Y-m-d",strtotime($tgl));
+              $sql = "INSERT INTO penyewaan (id_pelanggan,tanggal_penyewaan,waktu,id_scooter,total_harga) 
+              VALUES ('$id_pelanggan', '$tgl' , '$waktu' , '$id_scooter' , '$total_harga')";
+              $stmt = $db->prepare($sql);
+              $saved = $stmt->execute();
+
+
+              if($saved) { 
+                //echo "succes";
+                echo "<script>location='list.php';</script>";
+                $sql2 = "UPDATE scooter SET status = '$status' WHERE id_scooter = '$id_scooter'";
+                $stmt2 = $db->prepare($sql2);
+                $saved2 = $stmt2->execute();
+              }
             }
-                    echo "<pre>";
-                    print_r($_SESSION);
-                    echo "</pre>";
-            //     echo "<script>location='list.php';</script>";
-              } ?>
-           
-        </div>
+                ?>
       </div>
-    </div>
+  </div>
+  </div> -->
 
 
 

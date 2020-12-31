@@ -1,19 +1,255 @@
-.col-sm-3{
-    height: 420px;
-    border: solid 1px;
-    margin: 20px 0;
+/* my own styling */
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Montserrat', sans-serif;
 }
-.col-sm-3 img{
-    object-fit: cover;
-    width: 100%;
-    height: 300px;
-    border-radius: 20px;;
+.atas{
+    height: 50px;
+    width: 100vw;
+    background-color: #1B1F22;
 }
 
-.rec1{
-    margin: 0;
-    width: 100px;
-    position: fixed;
-    height: 20px;
+/* ini scooter-ku-page */
+.atas-table{
+    margin : 5% 5% 3% 5%;
+}
+.tabel{
+    margin : 0% 5% 2% 5%;
+}
+.table-hover{
+    border-collapse:collapse;
+    width: 100%;
+}
+.table-hover td, .table-hover th{
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.table-hover th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #1B1F22;
+  color: white;
+}
+.table-hover tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.table-hover td a{
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color:#B01717; 
+}
+.table-hover td a:hover{
+    background-color: #E81E1E
+}
+.btn-beranda{
+    margin: 0 5% 0 5%;
+    color: black;
+    font-size : 20px;
+}
+.btn-beranda:hover{
+    color: #1B1F22;
+}
+
+/* ini details-page */
+.kembali-beranda{
+    margin: 5% 0 0 15%;
+}
+.kembali-beranda a{
+    font-size: 25px;
+    color: #1B1F22;
+    font-weight: bold;
+}
+.details-page{
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 3%;
+}
+.details-page .kiri-detail{
+    flex: 1;
+    align-content: center;
+}
+.details-page .kiri-detail img{
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+}
+.details-page .kiri-detail .ket-details{
+    width: 100%;
+    display: inline-flex;
+    margin: 3% 0 0 0;
+    justify-content: space-between;
+}
+.details-page .kiri-detail .ket-details p{
+    font-size: 35px;
+}
+.details-page .kanan-detail{
+    flex: 1.25;
+}
+.details-page .kanan-detail h3{
+    font-size: 35px;
+    margin: 0 7%;
+    color: #1B1F22;
+}
+.details-page .kanan-detail form{
+    margin: 6% 0 0 0;
+}
+.details-page .kanan-detail .form{
+    width: 80%;
+}
+.details-page .kanan-detail .form input{
+    width: 100%;
+}
+.details-page .kanan-detail .konfirm-harga{
+    display: flex;
+    margin: 0 0 0 4%;
+}
+.details-page .kanan-detail .konfirm-harga .btn-confirm{
+    margin: 0 3% 3% 3%;
+    width: 250px;
+    height: 70px;
+    border-radius: 20px;
+    border: none;
     background-color: #1B1F22;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+}
+.details-page .kanan-detail .konfirm-harga p{
+    font-size: 25px;
+    line-height: 70px;
+    margin-left: 15%;
+}
+.details-page .kanan-detail .btn-sewa{
+    margin : 2% 0 3% 7%;
+    width: 90%;
+    height: 70px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1B1F22;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+}
+
+/* ini login-page dan register-page */
+.login-page{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 7%;
+    text-align: center;
+    padding: 2% 0;
+}
+.register-page{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2%;
+    text-align: center;
+    padding: 0;
+}
+.login-page h1, .register-page h1{
+    font-size: 55px;
+    color: #1B1F22;
+    margin-bottom: 3% ;
+}
+.register-page .form{
+    width: 60%;
+    /* height: 40px; */
+    padding: 12px 20px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    border-radius: 20px;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+    display: flex;
+}
+.login-page .form, .details-page .form{
+    width: 60%;
+    /* height: 40px; */
+    padding: 12px 20px;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+    display: flex;
+}
+.login-page .form i, .register-page .form i{
+    font-size: 25px;
+    line-height: 40px;
+    padding-right: 15px;
+}
+.login-page .form input, .register-page .form input, .details-page .form input{
+    border: none;
+    font-size: 20px;
+}
+.login-page button, .register-page button{
+    background-color: #1B1F22;
+    width: 200px;
+    height: 50px;
+    border: none;
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 20px;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.2);
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+/* ini homepage */
+.isi {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 7%;
+}
+.kiri{
+    flex: .75;
+    padding: 50px;
+}
+.kiri h1{
+    font-size: 55px;
+    color: #1B1F22;
+}
+.kiri p{
+    font-size:35px;
+    margin-top:10px;
+}
+.kiri .button{
+    margin-top: 40px;
+    display: inline-flex;
+}
+.kiri .button .login{
+    background-color: #1B1F22;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
+}
+.kiri .button .login a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 50px;
+}
+.kiri .button .register{
+    color:#1B1F22;
+    font-size: 25px;
+    line-height: 50px;
+    margin-left: 30px;
+}
+.kanan{
+    flex: 1.05;
+}
+.kanan img{
+    width: 95%;
+    float: right;
+    box-shadow: -40px 40px 0px 1px rgba(27, 31, 34, 1);
 }

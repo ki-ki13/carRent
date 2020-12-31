@@ -39,40 +39,46 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel = "stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 
     <title>Register</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    <h3><a href="index.php">Homepage</a></h3>
-
-    <form action="" method="POST">
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="text" class="form-control" name="email" placeholder="email">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="password">
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="username">
-    </div>
-    <div class="form-group">
-        <label for="nama">Nama</label>
-        <input type="text" class="form-control" name="nama" placeholder="nama">
-    </div>
-    <div class="form-group">
-        <label for="alamat">Alamat</label>
-        <input type="text" class="form-control" name="alamat" placeholder="alamat">
-    </div>
-    <div class="form-group">
-        <label for="no_telp">No.Telp</label>
-        <input type="text" class="form-control" name="no_telp" placeholder="08xxxx">
-    </div>
-    <button type="submit" class="btn btn-primary" name="register">Register</button>
-    </form>
+  <div class="atas"></div>
+        <div class="register-page">
+            <h1>Register</h1>
+            <form action="" method="POST">
+                <div class="form">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" class="form-control" name="email" placeholder="email">
+                </div>
+                <div class="form">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <div class="form">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control" name="username" placeholder="username">
+                </div>
+                <div class="form">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control" name="nama" placeholder="nama">
+                </div>
+                <div class="form">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <input type="text" class="form-control" name="alamat" placeholder="alamat">
+                </div>
+                <div class="form">
+                    <i class="fas fa-phone-square-alt"></i>
+                    <input type="text" class="form-control" name="no_telp" placeholder="08xxxx">
+                </div>
+                <button type="submit" class="button-register" name="register">Register</button>
+            </form>
+        </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
