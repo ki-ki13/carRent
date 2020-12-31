@@ -39,29 +39,31 @@
                 <h3>Details</h3>
                 <form action="" method="POST">
                     <div class="form">
-                        <input type="number" min="0" max="4" class="form-waktu" name="lama_penyewaan" placeholder="lama penyewaan">
+                        <input type="text" class="form-waktu" name="lama_penyewaan" id="value1" placeholder="lama penyewaan">
                     </div>
                     <div class="form">
                         <input type="date" class="form-tgl" name="tanggal_penyewaan" placeholder="tanggal penyewaan">
                     </div>
-                    <div class="konfirm-harga">
-                        <button type="submit" class="btn-confirm" name="confirm">Konfirmasi</button>
-                        <!-- php-script -->
-                        <?php
-                          if(isset($_POST['confirm'])){
-                              $id_pelanggan = $_SESSION["user"]["id_pelanggan"];
-                              $status = "rent";
-                              $tgl = $_POST['tanggal_penyewaan'];
-                              $waktu = $_POST['lama_penyewaan'];
-                              $harga = $perproduk['harga'];
-                              $total_harga = $harga * $waktu;?>
-                        <p>Rp. <?php echo $total_harga?></p>
-                        <?php } ?>
+                    <div class ="konfirm-harga">
+                          <input type="button" class="btn-confirm" value ="Konfirmasi" onclick="maFunc()">
+                          <div class="span-grup">
+                            <span>Total biaya = Rp. </span>
+                            <span id="demo"></span>
+                          </div>  
                     </div>
                     <button type="submit" class="btn-sewa" name="okay">Sewa</button>
+                </form>
                     <!-- php-script -->
+                    
                     <?php 
                       if(isset($_POST['okay'])){
+                        $id_pelanggan = $_SESSION["user"]["id_pelanggan"];
+                        $status = "rent";
+                        $tgl = $_POST['tanggal_penyewaan'];
+                        $waktu = $_POST['lama_penyewaan'];
+                        $harga = $perproduk['harga'];
+                        $total_harga = $harga * $waktu;?>
+                        <?php 
                         $mysqlDate = date("Y-m-d",strtotime($tgl));
                         $sql = "INSERT INTO penyewaan (id_pelanggan,tanggal_penyewaan,waktu,id_scooter,total_harga) 
                         VALUES ('$id_pelanggan', '$tgl' , '$waktu' , '$id_scooter' , '$total_harga')";
@@ -69,7 +71,7 @@
                         $saved = $stmt->execute();
                        
                         if($saved) { 
-                          //echo "succes";
+                          echo "succes";
                           echo "<script>location='list.php';</script>";
                           $sql2 = "UPDATE scooter SET status = '$status' WHERE id_scooter = '$id_scooter'";
                           $stmt2 = $db->prepare($sql2);
@@ -77,9 +79,16 @@
                         }
                       }
                           ?>
-                </form>
             </div>
         </div>
+        <script>
+              function maFunc() {
+                   var x = '<?php echo $perproduk['harga']; ?>';
+                   var y = document.getElementById("value1").value;
+                   var z = x*y;
+                  document.getElementById('demo').innerHTML= z ;
+                   }
+        </script>
   <!-- <div class="main">
   <h1>Scooter Details</h1>
   <div class="container">

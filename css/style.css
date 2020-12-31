@@ -122,10 +122,10 @@
     cursor: pointer;
     box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.4);
 }
-.details-page .kanan-detail .konfirm-harga p{
-    font-size: 25px;
+.details-page .kanan-detail .konfirm-harga .span-grup{
+    font-size: 20px;
     line-height: 70px;
-    margin-left: 15%;
+    margin-left: 5%;
 }
 .details-page .kanan-detail .btn-sewa{
     margin : 2% 0 3% 7%;
