@@ -69,13 +69,18 @@
                         VALUES ('$id_pelanggan', '$tgl' , '$waktu' , '$id_scooter' , '$total_harga')";
                         $stmt = $db->prepare($sql);
                         $saved = $stmt->execute();
+                        $last_id = $db->lastInsertId();
                        
                         if($saved) { 
-                          echo "succes";
+                          // echo "succes";
                           echo "<script>location='list.php';</script>";
                           $sql2 = "UPDATE scooter SET status = '$status' WHERE id_scooter = '$id_scooter'";
                           $stmt2 = $db->prepare($sql2);
                           $saved2 = $stmt2->execute();
+                          $sql1 = "INSERT INTO penyewaan_produk (id_penyewaan, id_pelanggan,tanggal_penyewaan,waktu,id_scooter,total_harga) 
+                          VALUES ('$last_id' , '$id_pelanggan', '$tgl' , '$waktu' , '$id_scooter' , '$total_harga')";
+                          $stmt1 = $db->prepare($sql1);
+                          $saved1 = $stmt1->execute();
                         }
                       }
                           ?>

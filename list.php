@@ -40,7 +40,7 @@
       $ambil = $db ->query("SELECT * FROM penyewaan WHERE id_pelanggan = '$id_pelanggan' ");
           while($perproduk = $ambil -> fetch(PDO::FETCH_ASSOC)){?>
       <tr>
-        <td><?php echo $perproduk['id_scooter']?></td>
+        <td>Scooter<?php echo $perproduk['id_scooter']?></td>
         <td><?php echo $perproduk['tanggal_penyewaan']?></td>
         <td><?php echo $perproduk['waktu']?></td>
         <td><?php echo $perproduk['total_harga']?></td>
