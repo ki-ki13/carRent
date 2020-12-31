@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Des 2020 pada 04.06
+-- Waktu pembuatan: 31 Des 2020 pada 14.56
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -66,7 +66,9 @@ CREATE TABLE `penyewaan` (
 --
 
 INSERT INTO `penyewaan` (`id_penyewaan`, `id_pelanggan`, `id_scooter`, `tanggal_penyewaan`, `waktu`, `total_harga`) VALUES
-(40, 5, 2, '2020-12-31', 2, 80000);
+(69, 3, 4, '2020-12-31', 1, 50000),
+(70, 3, 2, '2021-01-02', 2, 80000),
+(75, 5, 3, '2021-01-01', 2, 90000);
 
 -- --------------------------------------------------------
 
@@ -78,8 +80,18 @@ CREATE TABLE `penyewaan_produk` (
   `id_penyewaan_scooter` int(11) NOT NULL,
   `id_penyewaan` int(11) NOT NULL,
   `id_scooter` int(11) NOT NULL,
-  `waktu` int(11) NOT NULL
+  `id_pelanggan` int(11) NOT NULL,
+  `tanggal_penyewaan` date NOT NULL,
+  `waktu` int(11) NOT NULL,
+  `total_harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `penyewaan_produk`
+--
+
+INSERT INTO `penyewaan_produk` (`id_penyewaan_scooter`, `id_penyewaan`, `id_scooter`, `id_pelanggan`, `tanggal_penyewaan`, `waktu`, `total_harga`) VALUES
+(6, 75, 3, 5, '2021-01-01', 2, 90000);
 
 -- --------------------------------------------------------
 
@@ -102,8 +114,8 @@ CREATE TABLE `scooter` (
 INSERT INTO `scooter` (`id_scooter`, `nama_scooter`, `harga`, `foto`, `status`) VALUES
 (1, 'scooter 1', 30000, 'scooter1.jpg', 'avalaible'),
 (2, 'scooter 2', 40000, 'scooter2.jpg', 'rent'),
-(3, 'scooter 3', 45000, 'scooter3.jpg', 'avalaible'),
-(4, 'scooter 4', 50000, 'scooter4.jpg', 'avalaible'),
+(3, 'scooter 3', 45000, 'scooter3.jpg', 'rent'),
+(4, 'scooter 4', 50000, 'scooter4.jpg', 'rent'),
 (5, 'scooter 5', 55000, 'scooter5.jpg', 'avalaible'),
 (6, 'scooter 6', 60000, 'scooter6.jpg', 'avalaible'),
 (7, 'scooter 7', 65000, 'scooter7.jpg', 'avalaible'),
@@ -153,21 +165,9 @@ ALTER TABLE `pelanggan`
 -- AUTO_INCREMENT untuk tabel `penyewaan`
 --
 ALTER TABLE `penyewaan`
-  MODIFY `id_penyewaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_penyewaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT untuk tabel `penyewaan_produk`
 --
 ALTER TABLE `penyewaan_produk`
-  MODIFY `id_penyewaan_scooter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `scooter`
---
-ALTER TABLE `scooter`
-  MODIFY `id_scooter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
