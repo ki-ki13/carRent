@@ -6,7 +6,7 @@
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
-        $alamat = filter_input(INPUT_POST, 'nama', FILTER_DEFAULT);
+        $alamat = filter_input(INPUT_POST, 'alamat', FILTER_DEFAULT);
         $no_telp = filter_input(INPUT_POST, 'no_telp', FILTER_DEFAULT);
 
         $sql = "INSERT INTO pelanggan (email, password, username, nama, alamat, no_telp) 
